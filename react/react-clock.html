@@ -11,7 +11,7 @@
     <div id="root"></div>
     <script type="text/babel">
       // 定期的に時間を表示
-      setInterval(showClock, 1000);
+      setInterval(showClock, 1000)
       // 毎秒実行される関数群
       function showClock() {
         const d = new Date();
@@ -22,7 +22,7 @@
           {hour}:{min}:{sec}
         </div>;
         const root = document.getElementById('root');
-        ReactDOM().render(elem, root);
+        ReactDOM.render(elem, root);
       }
     </script>
   </body>
