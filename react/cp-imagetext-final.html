@@ -6,28 +6,19 @@
   </head><body>
     <div id="root"></div>
     <script type="text/babel">
-    // Use components
-      const dom = <div>
-        <PhotoText image="pic1" label="pic1" />
-        <PhotoText image="pic2" label="pic2" />
-        <PhotoText image="pic3" label="pic3" />
-        </div>;
-      // React DOMで書き換え
-      ReactDOM.render(dom,
-        document.getElementById('root'))
-      // 関数でコンポーネントを定義
-      function PhotoText(props) {
-        const url = 'img/' + props.image + '.jpeg';
-        const label = props.label;
-        const boxStyle = {
-          border: "1px solid silver",
-          margin: "8px",
-          padding: "4px"
+    // クラスでコンポーネントを定義
+      class Greeting extends React.Component {
+        render() {
+          return <h1>{this.props.type}</h1>
         }
-        return <div style={boxStyle}>
-               <img src={url} width="128" />
-               <span>{label}</span>
-          </div>
-      }
+      };
+    // コンポーネントを利用
+    const dom = <div>
+      <Greeting type='Hello' />
+      <Greeting type='Good morning' />
+      </div>
+    // ReactでDOMを書き換え
+    ReactDOM.render(dom,
+      document.getElementById('root'));
     </script>
   </body></html>
