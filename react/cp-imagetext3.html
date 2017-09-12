@@ -1,0 +1,32 @@
+<!DOCTYPE html><html><head>
+        <meta charset="utf-8">
+        <script src="https://unpkg.com/react@15/dist/react.min.js"></script>
+        <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.38/browser.min.js"></script>
+      </head><body>
+        <div id="root"></div>
+        <script type="text/babel">
+        // クラスでコンポーネントを定義
+        class PhotoText extends React.Component {
+            getImageUrl() {
+                const id = this.props.image;
+                const url = 'img/' + id + '.jpeg';
+                return url;
+            }
+            render() {
+                const label = this.props.label;
+                const url = this.getImagetUrl()
+                const boxStyle = {
+                    border: 'solid 1px silver',
+                    margin: '8px',
+                    padding: '4px'
+                }
+                return (<div style={boxStyle}>
+                    <img src={url} width='128' />
+                    <span>{ label }</span>
+                </div>)
+            }
+        }
+        </script>
+      </body></html>
+    
