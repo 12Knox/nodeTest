@@ -8,12 +8,12 @@
   <script type="text/babel">
   // アロー演算子でコンポーネントを定義
   const TitleParts = (props) => (
-    <div style={{ border: '1px solid blue', margin: 15 }}>
+    <div style={{ backgroundColor: 'red', color: 'white' }}>
       <h3>{props.title}</h3>
     </div>
   )
   const ContentPart = (props) => (
-    <div>あらすじ：{props.body}</div>
+    <div style={{ border: '1px solid blue', margin: 15 }}>あらすじ：{props.body}</div>
   )
   // メインコンポーネント
   const Book = (props) => (
@@ -22,6 +22,13 @@
       <ContentPart body={props.body} />
     </div>    
   )
- 
+  // ReactでDOMを書き換え
+  ReactDOM.render(
+    (<div>
+      <Book title='三国志' body='昔の中国の話' />
+      <Book title='民数記' body='昔のイスラエルの話' />
+      <Book title='西遊記' body='猿が活躍する話' />
+      </div>),
+      document.getElementById('root'));
   </script>
 </body></html>
