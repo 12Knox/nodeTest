@@ -1,0 +1,27 @@
+<!DOCTYPE html><html><head>
+  <meta charset="utf-8">
+  <script src="https://unpkg.com/react@15/dist/react.min.js"></script>
+  <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.38/browser.min.js"></script>
+</head><body>
+  <div id="root"></div>
+  <script type="text/babel">
+  // アロー演算子でコンポーネントを定義
+  const TitleParts = (props) => (
+    <div style={{ border: '1px solid blue', margin: 15 }}>
+      <h3>{props.title}</h3>
+    </div>
+  )
+  const ContentPart = (props) => (
+    <div>あらすじ：{props.body}</div>
+  )
+  // メインコンポーネント
+  const Book = (props) => (
+    <div>
+      <TitleParts title={props.title}  />
+      <ContentPart body={props.body} />
+    </div>    
+  )
+ 
+  </script>
+</body></html>
