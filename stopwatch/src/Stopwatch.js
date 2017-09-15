@@ -6,8 +6,11 @@ class Stopwatch extends React.Component {
   constructor(props) {
     super(props)
     this.state = {  //初期値を設定
+      // ストップウォッチが動いているかの確認
       isLive: false,
+      // 現在時刻の値
       curTime: 0,
+      // スタートボタンを押した時刻を表す値
       startTime: 0,
     }
     this.timerId = 0;
