@@ -6,8 +6,11 @@ class Stopwatch extends React.Component {
   constructor(props) {
     super(props)
     this.state = {  //初期値を設定
+      // ストップウォッチが動いているかの確認
       isLive: false,
+      // 現在時刻の値
       curTime: 0,
+      // スタートボタンを押した時刻を表す値
       startTime: 0,
     }
     this.timerId = 0;
@@ -20,6 +23,60 @@ class Stopwatch extends React.Component {
   }
   // アンマウントしたとき
   componentWillUnmount() {
-    clearInterval(this.timerId)
+    clearInterval(this.timerId);
+  }
+  // 毎秒実行される
+  tick() {
+    if (this.state.isLive) {
+      const v = new Date().getTime();
+      this.setState({ curTime: v });
+    }
+  }
+  // 開始・停止ボタンを押したとき
+  clickHandler(e) {
+    // 停止するとき
+    if (this.state.isLive) {
+      this.setState({ isLive: false });
+      return
+    }
+    // 開始するとき
+    const v = new Date().getTime();
+    this.setState({
+      curTime: v,
+      startTime: v,
+      isLive: true,
+    });
+  };
+  // 時刻表ディスプレイを返す
+  getDisp() {
+    const s = this.state;
+    const delta = s.curTime - s.startTime;
+    const t = Math.floor(delta / 1000);
+    const ss = t % 60;
+    const m = Math.floor(t / 60);
+    const mm = m % 60;
+    const hh = Math.floor(mm / 60);
+    const z = (num) => {
+      const s = '00' + String(num);
+      return s.substr(s.length - 2, 2);
+    }
+    return <span className='disp'>
+      {z(hh)}:{z(mm)}:{z(ss)}
+    </span>
+  }
+  // 画面描画
+  render() {
+    let label = 'START';
+    if (this.state.isLive) {
+      label = 'STOP';
+    }
+    const disp = this.getDisp()
+    const fclick = (e) => this.clickHandler(e)
+    return (<div className='StopWatch'>
+      <div>{disp}</div>
+      <button onClick={fclick}>{label}</button>
+    </div>);
   }
 }
+
+export default Stopwatch;
