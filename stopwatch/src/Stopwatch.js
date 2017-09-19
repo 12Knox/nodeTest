@@ -22,7 +22,4 @@ class Stopwatch extends React.Component {
   componentWillUnmount() {
     clearInterval(this.timerId)
   }
-  
-  
-  
 }
