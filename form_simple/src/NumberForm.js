@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 export default class NumberForm extends React.Component {
   constructor(props) {
-    super(props)
-    this.state = { value: '' }
+    super(props);
+    this.state = { value: '' };
   }
   doChange(e) {
     const curValue = e.target.value;
@@ -13,6 +13,7 @@ export default class NumberForm extends React.Component {
   // 送信ボタンが押された
   doSubmit(e) {
     window.alert('値を送信：' + this.state.value);
+    console.log('hogehoge');
     e.preventDefault();
   }
   // 画面の描画
@@ -20,13 +21,11 @@ export default class NumberForm extends React.Component {
     // イベントをメソッドにバインド
     const doSubmit = (e) => this.doSubmit(e);
     const doChange = (e) => this.doChange(e);
-    return(
+    return (
       <form onSubmit={ doSubmit }>
-        <input type='text'
-        value={this.state.value}
-        onChange={ doChange } />
+        <input type='text' value = {this.state.value} onChange = { doChange } />
         <input type='submit' value='送信' />
       </form>
-    )
+    );
   }
 }
